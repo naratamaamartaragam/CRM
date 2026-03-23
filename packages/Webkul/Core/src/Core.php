@@ -15,7 +15,7 @@ class Core
      *
      * @var string
      */
-    const KRAYIN_VERSION = '2.1.6';
+    const KRAYIN_VERSION = '2.2.0';
 
     /**
      * Create a new instance.
@@ -136,7 +136,7 @@ class Core
 
         $collection = $this->countryStateRepository->findByField([
             'country_code' => $countryCode,
-            'code'         => $stateCode,
+            'code' => $stateCode,
         ]);
 
         if (count($collection)) {
