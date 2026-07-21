@@ -132,15 +132,15 @@
                                     <!-- Header -->
                                     <div class="flex items-start justify-between">
                                         <div class="flex items-center gap-1">
-                                            <x-admin::avatar ::name="element.person.name" />
+                                            <x-admin::avatar ::name="element.person ? element.person.name : 'Unknown'" />
 
                                             <div class="flex flex-col gap-0.5">
                                                 <span class="text-xs font-medium">
-                                                    @{{ element.person.name }}
+                                                    @{{ element.person ? element.person.name : 'Unknown' }}
                                                 </span>
 
                                                 <span class="text-[10px] leading-normal">
-                                                    @{{ element.person.organization?.name }}
+                                                    @{{ element.person && element.person.organization ? element.person.organization.name : '' }}
                                                 </span>
                                             </div>
                                         </div>
@@ -186,11 +186,17 @@
                                             @{{ element.formatted_lead_value }}
                                         </div>
 
-                                        <div class="rounded-xl bg-gray-200 px-2 py-1 text-xs font-medium dark:bg-gray-800 dark:text-white">
+                                        <div
+                                            class="rounded-xl bg-gray-200 px-2 py-1 text-xs font-medium dark:bg-gray-800 dark:text-white"
+                                            v-if="element.source"
+                                        >
                                             @{{ element.source.name }}
                                         </div>
 
-                                        <div class="rounded-xl bg-gray-200 px-2 py-1 text-xs font-medium dark:bg-gray-800 dark:text-white">
+                                        <div
+                                            class="rounded-xl bg-gray-200 px-2 py-1 text-xs font-medium dark:bg-gray-800 dark:text-white"
+                                            v-if="element.type"
+                                        >
                                             @{{ element.type.name }}
                                         </div>
 
@@ -339,6 +345,8 @@
 
                     isLoading: true,
 
+                    isLoadingMore: false,
+
                     tagTextColor: {
                         '#FEE2E2': '#DC2626',
                         '#FFEDD5': '#EA580C',
@@ -369,6 +377,15 @@
 
             mounted () {
                 this.boot();
+
+                this.$emitter.on('reload-datagrids', () => {
+                    this.get()
+                        .then(response => {
+                            for (let [sortOrder, data] of Object.entries(response.data)) {
+                                this.stageLeads[sortOrder] = data;
+                            }
+                        });
+                });
             },
 
             methods: {
@@ -427,6 +444,20 @@
 
                             params['search'] += `title:${column.value.join(',')};`;
                             params['searchFields'] += `title:like;`;
+
+                            return;
+                        }
+
+                        /**
+                         * Date range filters are sent as a dedicated parameter, not through the search
+                         * string, so the server can resolve them the same way the datagrid does. A quick
+                         * filter, such as `last_month`, is applied as a plain string, whereas a custom
+                         * range is applied as a `[[from, to]]` pair.
+                         */
+                        if (column.type === 'date' || column.type === 'datetime') {
+                            if (column.value.length) {
+                                params[column.index] = column.value;
+                            }
 
                             return;
                         }
@@ -668,9 +699,13 @@
                  * @returns {void}
                  */
                 handleScroll(stage, event) {
-                    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
+                    const bottom = event.target.scrollHeight - event.target.scrollTop - event.target.clientHeight <= 5;
 
                     if (! bottom) {
+                        return;
+                    }
+
+                    if (this.isLoadingMore) {
                         return;
                     }
 
@@ -678,11 +713,15 @@
                         return;
                     }
 
+                    this.isLoadingMore = true;
+
                     this.append({
                         pipeline_stage_id: stage.id,
                         pipeline_id: stage.lead_pipeline_id,
                         page: this.stageLeads[stage.sort_order].leads.meta.current_page + 1,
                         limit: 10,
+                    }).finally(() => {
+                        this.isLoadingMore = false;
                     });
                 },
 

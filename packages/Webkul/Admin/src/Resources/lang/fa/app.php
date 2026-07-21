@@ -2,6 +2,7 @@
 
 return [
     'acl' => [
+        'help' => 'راهنما',
         'leads' => 'سرنخ‌ها',
         'lead' => 'سرنخ',
         'quotes' => 'پیشنهادات',
@@ -33,6 +34,7 @@ return [
         'tags' => 'برچسب‌ها',
         'configuration' => 'پیکربندی',
         'create' => 'ایجاد',
+        'quick_add' => 'افزودن سریع',
         'edit' => 'ویرایش',
         'view' => 'نمایش',
         'print' => 'چاپ',
@@ -342,11 +344,15 @@ return [
                         'quotes' => 'پیشنهادات',
                         'persons' => 'افراد',
                         'products' => 'محصولات',
+                        'settings' => 'تنظیمات',
+                        'configurations' => 'پیکربندی‌ها',
                     ],
                     'explore-all-products' => 'کاوش در تمامی محصولات',
                     'explore-all-leads' => 'کاوش در تمامی سرنخ‌ها',
                     'explore-all-contacts' => 'کاوش در تمامی مخاطبین',
                     'explore-all-quotes' => 'کاوش در تمامی پیشنهادات',
+                    'explore-all-settings' => 'کاوش در تمامی تنظیمات',
+                    'explore-all-configurations' => 'کاوش در تمامی پیکربندی‌ها',
                     'explore-all-matching-products' => 'کاوش در تمامی محصولات مطابق ":query" (:count)',
                     'explore-all-matching-leads' => 'کاوش در تمامی سرنخ‌های مطابق ":query" (:count)',
                     'explore-all-matching-contacts' => 'کاوش در تمامی مخاطبین مطابق ":query" (:count)',
@@ -411,6 +417,7 @@ return [
                 'billing-address' => 'آدرس صورتحساب',
                 'date' => 'تاریخ',
                 'discount' => 'تخفیف',
+                'description' => 'توضیحات',
                 'expired-at' => 'تاریخ انقضا',
                 'grand-total' => 'جمع کل',
                 'person' => 'شخص',
@@ -434,6 +441,7 @@ return [
             'quote-info-info' => 'اطلاعات پایه نقل‌قول را وارد کنید.',
             'address-info' => 'اطلاعات آدرس',
             'address-info-info' => 'اطلاعات مربوط به آدرس مرتبط با نقل‌قول.',
+            'same-as-billing' => 'آدرس ارسال همانند آدرس صورتحساب',
             'quote-items' => 'موارد نقل‌قول',
             'search-products' => 'جستجوی محصولات',
             'link-to-lead' => 'پیوند به سرنخ',
@@ -509,6 +517,7 @@ return [
                     'view' => 'مشاهده',
                     'name' => 'نام',
                     'organization-name' => 'نام سازمان',
+                    'tag-name' => 'نام برچسب',
                 ],
             ],
             'view' => [
@@ -659,13 +668,13 @@ return [
                 'about-product' => 'درباره محصول',
             ],
             'inventory' => [
-                'source' => 'منبع',
+                'warehouse' => 'انبار',
                 'in-stock' => 'در انبار',
                 'allocated' => 'اختصاص داده شده',
                 'on-hand' => 'موجودی',
                 'actions' => 'عملیات',
                 'assign' => 'اختصاص دادن',
-                'add-source' => 'افزودن منبع',
+                'add-warehouse' => 'افزودن انبار',
                 'location' => 'مکان',
                 'add-more' => 'افزودن بیشتر',
                 'save' => 'ذخیره',
@@ -848,6 +857,8 @@ return [
                 'any-condition-are-true' => 'هر شرطی صحیح است',
                 'add-condition' => 'افزودن شرط',
                 'add-action' => 'افزودن اقدام',
+                'no-webhook-found' => 'هیچ وب‌هوکی یافت نشد.',
+                'create-webhook' => 'ایجاد وب‌هوک جدید.',
                 'yes' => 'بله',
                 'no' => 'خیر',
                 'email' => 'ایمیل',
@@ -931,6 +942,7 @@ return [
                 'general' => 'عمومی',
                 'leads' => 'سرنخ‌ها',
                 'person' => 'شخص',
+                'pipeline' => 'پایپ‌لاین',
                 'save-btn' => 'ذخیره فرم وب',
                 'submit-button-label' => 'برچسب دکمه ارسال',
                 'submit-success-action' => 'عملکرد موفقیت آمیز ارسال',
@@ -964,6 +976,7 @@ return [
                 'general' => 'عمومی',
                 'leads' => 'سرنخ‌ها',
                 'person' => 'شخص',
+                'pipeline' => 'پایپ‌لاین',
                 'preview' => 'پیش‌نمایش',
                 'public-url' => 'آدرس عمومی',
                 'redirect-to-url' => 'انتقال به آدرس',
@@ -1148,7 +1161,7 @@ return [
                     'status' => 'وضعیت',
                     'title' => 'ایجاد کاربر',
                     'view-permission' => 'مجوز مشاهده',
-                    'select-at-lest-one-group' => 'Select at least one group',
+                    'select-at-lest-one-group' => 'حداقل یک گروه را انتخاب کنید',
                 ],
                 'edit' => [
                     'title' => 'ویرایش کاربر',
@@ -1189,7 +1202,7 @@ return [
                 'lost-stage' => 'بازنده',
                 'stage-btn' => 'افزودن مرحله',
                 'stages' => 'مراحل',
-                'duplicate-name' => 'فیلد "نام" نمی‌تواند تکراری باشد',
+                'duplicate-name' => 'فیلد نام نمی‌تواند تکراری باشد',
                 'delete-stage' => 'حذف مرحله',
                 'add-new-stages' => 'افزودن مراحل جدید',
                 'add-stage-info' => 'مرحله جدیدی برای پایپ‌لاین خود اضافه کنید',
@@ -1209,7 +1222,7 @@ return [
                 'lost-stage' => 'بازنده',
                 'stage-btn' => 'افزودن مرحله',
                 'stages' => 'مراحل',
-                'duplicate-name' => 'فیلد "نام" نمی‌تواند تکراری باشد',
+                'duplicate-name' => 'فیلد نام نمی‌تواند تکراری باشد',
                 'delete-stage' => 'حذف مرحله',
                 'add-new-stages' => 'افزودن مراحل جدید',
                 'add-stage-info' => 'مرحله جدیدی برای پایپ‌لاین خود اضافه کنید',
@@ -1368,6 +1381,7 @@ return [
                     'is-default' => 'پیش‌فرض است',
                     'edit' => 'ویرایش',
                     'delete' => 'حذف',
+                    'quick-add' => 'افزودن سریع',
                     'entity-types' => [
                         'leads' => 'سرنخ‌ها',
                         'organizations' => 'سازمان‌ها',
@@ -1400,6 +1414,7 @@ return [
                 'save-btn' => 'ذخیره ویژگی',
                 'code' => 'کد',
                 'name' => 'نام',
+                'quick_add' => 'افزودن سریع',
                 'entity-type' => 'نوع موجودیت',
                 'type' => 'نوع',
                 'validations' => 'اعتبارسنجی‌ها',
@@ -1465,8 +1480,9 @@ return [
                 'lookup-type' => 'نوع جستجو',
                 'multiselect' => 'چند انتخابی',
                 'name' => 'نام',
+                'quick_add' => 'افزودن سریع',
                 'numeric' => 'عددی',
-                'option-deleted' => 'Attribute Option is deleted successfully',
+                'option-deleted' => 'گزینه ویژگی با موفقیت حذف شد',
                 'option-name' => 'نام گزینه',
                 'option-type' => 'نوع گزینه',
                 'options' => 'گزینه‌ها',
@@ -1799,6 +1815,7 @@ return [
                     'title' => 'عنوان',
                     'tags' => 'برچسب‌ها',
                     'expected-close-date' => 'تاریخ بسته شدن مورد انتظار',
+                    'date-to' => 'تاریخ تا',
                     'created-at' => 'تاریخ ایجاد',
                 ],
                 'toolbar' => [
@@ -1814,6 +1831,15 @@ return [
                         'select' => 'انتخاب',
                         'to' => 'تا',
                     ],
+                ],
+                'stages' => [
+                    'won' => 'برد',
+                    'lost' => 'باخت',
+                    'need-more-info' => 'نیاز به اطلاعات بیشتر',
+                    'closed-at' => 'بسته شده در',
+                    'won-value' => 'ارزش برد',
+                    'lost-reason' => 'دلیل باخت',
+                    'save-btn' => 'ذخیره',
                 ],
             ],
             'view-switcher' => [
@@ -1852,6 +1878,7 @@ return [
         'common' => [
             'contact' => [
                 'name' => 'نام',
+                'name-search-placeholder' => 'جستجو بر اساس نام، ایمیل و شماره',
                 'email' => 'ایمیل',
                 'contact-number' => 'شماره تماس',
                 'organization' => 'سازمان',
@@ -1915,6 +1942,12 @@ return [
             'persons' => [
                 'title' => 'درباره افراد',
                 'job-title' => ':job_title در :organization',
+                'no-person' => 'هیچ شخص تماسی به این سرنخ اختصاص داده نشده است.',
+                'attach-btn' => 'پیوست کردن شخص تماس',
+                'change-btn' => 'تغییر',
+                'change-title' => 'تغییر شخص تماس',
+                'save-btn' => 'ذخیره',
+                'cancel-btn' => 'لغو',
             ],
             'stages' => [
                 'won' => 'برد',
@@ -1955,6 +1988,8 @@ return [
                         'logo-image' => 'تصویر لوگو',
                         'title' => 'لوگوی مدیر',
                         'title-info' => 'تصویر لوگو برای پنل مدیریت خود را پیکربندی کنید.',
+                        'favicon-image' => 'تصویر Favicon',
+                        'favicon-image-info' => 'تصویر Favicon برای پنل مدیریت خود را پیکربندی کنید.',
                     ],
                 ],
                 'settings' => [
@@ -1986,7 +2021,7 @@ return [
                         'trash' => 'زباله‌دان',
                     ],
                     'menu-color' => [
-                        'brand-color' => 'Brand Color',
+                        'brand-color' => 'رنگ برند',
                         'info' => 'ما می‌توانیم رنگ آیتم‌های منو را اینجا تغییر دهیم.',
                         'title' => 'پیکربندی رنگ آیتم‌های منو',
                     ],
@@ -2039,8 +2074,8 @@ return [
     'dashboard' => [
         'index' => [
             'title' => 'داشبورد',
-            'start-date' => 'Start Date',
-            'end-date' => 'End Date',
+            'start-date' => 'تاریخ شروع',
+            'end-date' => 'تاریخ پایان',
             'revenue' => [
                 'lost-revenue' => 'درآمد از دست رفته',
                 'won-revenue' => 'درآمد برنده',
@@ -2086,9 +2121,65 @@ return [
             ],
         ],
     ],
+    'help' => [
+        'index' => [
+            'title' => 'راهنما و منابع',
+            'description' => 'هر آنچه برای بهره‌برداری حداکثری از پنل مدیریت Krayin نیاز دارید — میزبانی، پشتیبانی و خدمات حرفه‌ای، به‌همراه افزونه‌ها و مستندات توسعه‌دهندگان.',
+            'contact-us' => 'تماس با ما',
+            'view-all' => 'مشاهده همه',
+            'still-need-help-title' => 'هنوز به کمک نیاز دارید؟',
+            'still-need-help-description' => 'درباره میزبانی، توسعه سفارشی یا هر موضوع دیگری با تیم Krayin گفتگو کنید.',
+
+            'services' => [
+                'title' => 'خدمات و منابع',
+                'cloud-hosting' => [
+                    'title' => 'میزبانی ابری',
+                    'description' => 'میزبانی ابری مدیریت‌شده و مقرون‌به‌صرفه — Krayin را در چند دقیقه روی فضای ابری اجرا و راه‌اندازی کنید، کاملاً بهینه و مقیاس‌پذیر.',
+                ],
+                'support' => [
+                    'title' => 'پشتیبانی و نگهداری',
+                    'description' => 'پشتیبانی فنی اختصاصی و طرح‌های نگهداری مستمر برای حفظ امنیت، به‌روزرسانی و عملکرد روان CRM شما.',
+                ],
+                'extensions' => [
+                    'title' => 'افزونه‌ها',
+                    'description' => 'افزونه‌های رسمی و انجمنی را مرور کنید تا Krayin را با اتصال‌دهنده‌ها، کانال‌ها و قابلیت‌های جدید گسترش دهید.',
+                ],
+            ],
+
+            'resources' => [
+                'title' => 'مستندات',
+                'user-docs' => [
+                    'title' => 'راهنمای کاربر',
+                    'description' => 'کمک تخصصی برای یکپارچه‌سازی ماژول‌ها، سفارشی‌سازی، انتقال داده‌ها، ارتقای نسخه و توسعه اختصاصی.',
+                ],
+                'dev-docs' => [
+                    'title' => 'مستندات توسعه‌دهندگان و وبلاگ‌ها',
+                    'description' => 'راهنماها، آموزش‌ها و جدیدترین مقالات توسعه‌دهندگان برای کمک به شما در ساخت، پیکربندی و به‌روز ماندن.',
+                ],
+                'api-docs' => [
+                    'title' => 'مستندات API',
+                    'description' => 'مرجع کامل REST API همراه با نقاط پایانی، احراز هویت و نمونه‌ها برای یکپارچه‌سازی Krayin با مجموعه ابزار شما.',
+                ],
+            ],
+
+            'community' => [
+                'forums' => [
+                    'title' => 'انجمن‌های کاربری',
+                    'description' => 'با هزاران کاربر و توسعه‌دهنده دیگر Krayin ارتباط برقرار کنید تا نکات را به اشتراک بگذارید و مشکلات را حل کنید.',
+                    'link' => 'به انجمن بپیوندید',
+                ],
+                'tutorials' => [
+                    'title' => 'آموزش‌های ویدیویی',
+                    'description' => 'راهنماهای ویدیویی گام‌به‌گام درباره راه‌اندازی CRM، پیکربندی لوله‌ها و مدیریت کاربران را تماشا کنید.',
+                    'link' => 'مشاهده کانال YouTube',
+                ],
+            ],
+        ],
+    ],
     'layouts' => [
         'app-version' => 'نسخه: :version',
         'dashboard' => 'داشبورد',
+        'help' => 'راهنما و منابع',
         'leads' => 'لیدها',
         'quotes' => 'نقل قول‌ها',
         'quote' => 'نقل قول',
@@ -2122,6 +2213,13 @@ return [
         'users-info' => 'اضافه، ویرایش یا حذف کاربران از CRM',
         'lead' => 'لید',
         'lead-info' => 'مدیریت همه تنظیمات مربوط به لیدها در CRM',
+        'quick-add' => [
+            'title' => 'افزودن سریع',
+            'save' => 'ذخیره',
+            'to' => 'به',
+            'subject' => 'موضوع',
+            'message' => 'پیام',
+        ],
         'pipelines' => 'پایپ‌لاین‌ها',
         'pipelines-info' => 'اضافه، ویرایش یا حذف پایپ‌لاین‌ها از CRM',
         'sources' => 'منابع',
@@ -2208,6 +2306,8 @@ return [
         'dashboard' => 'داشبورد',
         'go-back' => 'بازگشت',
         'support' => 'اگر مشکل ادامه داشت، برای کمک با ما از طریق <a href=":link" class=":class">:email</a> تماس بگیرید.',
+        'unauthorized' => 'این عملیات مجاز نیست.',
+
         '404' => [
             'description' => 'اوه! به نظر می‌رسد صفحه‌ای که دنبال آن بودید، در دسترس نیست. نتوانستیم چیزی که دنبالش بودید را پیدا کنیم.',
             'title' => '404 صفحه پیدا نشد',

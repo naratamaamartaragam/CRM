@@ -2,6 +2,7 @@
 
 return [
     'acl' => [
+        'help' => 'Ayuda',
         'leads' => 'Clientes potenciales',
         'lead' => 'Cliente potencial',
         'quotes' => 'Cotizaciones',
@@ -33,6 +34,7 @@ return [
         'tags' => 'Etiquetas',
         'configuration' => 'Configuración',
         'create' => 'Crear',
+        'quick_add' => 'Agregar Rápido',
         'edit' => 'Editar',
         'view' => 'Ver',
         'print' => 'Imprimir',
@@ -342,11 +344,15 @@ return [
                         'quotes' => 'Cotizaciones',
                         'persons' => 'Personas',
                         'products' => 'Productos',
+                        'settings' => 'Ajustes',
+                        'configurations' => 'Configuraciones',
                     ],
                     'explore-all-products' => 'Explorar todos los Productos',
                     'explore-all-leads' => 'Explorar todas las Oportunidades',
                     'explore-all-contacts' => 'Explorar todos los Contactos',
                     'explore-all-quotes' => 'Explorar todas las Cotizaciones',
+                    'explore-all-settings' => 'Explorar todos los Ajustes',
+                    'explore-all-configurations' => 'Explorar todas las Configuraciones',
                     'explore-all-matching-products' => 'Explorar todos los productos que coinciden con ":query" (:count)',
                     'explore-all-matching-leads' => 'Explorar todas las oportunidades que coinciden con ":query" (:count)',
                     'explore-all-matching-contacts' => 'Explorar todos los contactos que coinciden con ":query" (:count)',
@@ -411,6 +417,7 @@ return [
                 'billing-address' => 'Dirección de Facturación',
                 'date' => 'Fecha',
                 'discount' => 'Descuento',
+                'description' => 'Descripción',
                 'expired-at' => 'Vence en',
                 'grand-total' => 'Total General',
                 'person' => 'Persona',
@@ -434,6 +441,7 @@ return [
             'quote-info-info' => 'Introduce la información básica de la cotización.',
             'address-info' => 'Información de la Dirección',
             'address-info-info' => 'Información sobre la dirección relacionada con la cotización.',
+            'same-as-billing' => 'Dirección de envío igual que la dirección de facturación',
             'quote-items' => 'Artículos de la Cotización',
             'search-products' => 'Buscar Productos',
             'link-to-lead' => 'Vincular a cliente potencial',
@@ -509,6 +517,7 @@ return [
                     'view' => 'Ver',
                     'name' => 'Nombre',
                     'organization-name' => 'Nombre de la Organización',
+                    'tag-name' => 'Nombre de etiqueta',
                 ],
             ],
             'view' => [
@@ -659,13 +668,13 @@ return [
                 'about-product' => 'Sobre el Producto',
             ],
             'inventory' => [
-                'source' => 'Fuente',
+                'warehouse' => 'Almacén',
                 'in-stock' => 'En Stock',
                 'allocated' => 'Asignado',
                 'on-hand' => 'Disponible',
                 'actions' => 'Acciones',
                 'assign' => 'Asignar',
-                'add-source' => 'Agregar Fuente',
+                'add-warehouse' => 'Agregar almacén',
                 'location' => 'Ubicación',
                 'add-more' => 'Agregar Más',
                 'save' => 'Guardar',
@@ -848,6 +857,8 @@ return [
                 'any-condition-are-true' => 'Cualquiera de las condiciones es verdadera',
                 'add-condition' => 'Agregar Condición',
                 'add-action' => 'Agregar Acción',
+                'no-webhook-found' => 'No se encontraron webhooks.',
+                'create-webhook' => 'Crear un nuevo webhook.',
                 'yes' => 'Sí',
                 'no' => 'No',
                 'email' => 'Correo Electrónico',
@@ -931,6 +942,7 @@ return [
                 'general' => 'General',
                 'leads' => 'Leads',
                 'person' => 'Persona',
+                'pipeline' => 'Canal',
                 'save-btn' => 'Guardar Webform',
                 'submit-button-label' => 'Etiqueta del Botón de Enviar',
                 'submit-success-action' => 'Acción en caso de éxito de envío',
@@ -964,6 +976,7 @@ return [
                 'general' => 'General',
                 'leads' => 'Leads',
                 'person' => 'Persona',
+                'pipeline' => 'Canal',
                 'preview' => 'Vista Previa',
                 'public-url' => 'URL Pública',
                 'redirect-to-url' => 'Redirigir a la URL',
@@ -1189,7 +1202,7 @@ return [
                 'lost-stage' => 'Perdido',
                 'stage-btn' => 'Añadir Etapa',
                 'stages' => 'Etapas',
-                'duplicate-name' => 'El campo "Nombre" no puede ser duplicado',
+                'duplicate-name' => 'El campo Nombre no puede ser duplicado',
                 'delete-stage' => 'Eliminar Etapa',
                 'add-new-stages' => 'Añadir Nuevas Etapas',
                 'add-stage-info' => 'Añadir nueva etapa para tu Canal',
@@ -1209,7 +1222,7 @@ return [
                 'lost-stage' => 'Perdido',
                 'stage-btn' => 'Añadir Etapa',
                 'stages' => 'Etapas',
-                'duplicate-name' => 'El campo "Nombre" no puede ser duplicado',
+                'duplicate-name' => 'El campo Nombre no puede ser duplicado',
                 'delete-stage' => 'Eliminar Etapa',
                 'add-new-stages' => 'Añadir Nuevas Etapas',
                 'add-stage-info' => 'Añadir nueva etapa para tu Canal',
@@ -1368,6 +1381,7 @@ return [
                     'is-default' => 'Es Predeterminado',
                     'edit' => 'Editar',
                     'delete' => 'Eliminar',
+                    'quick-add' => 'Agregar Rápido',
                     'entity-types' => [
                         'leads' => 'Clientes potenciales',
                         'organizations' => 'Organizaciones',
@@ -1400,6 +1414,7 @@ return [
                 'save-btn' => 'Guardar Atributo',
                 'code' => 'Código',
                 'name' => 'Nombre',
+                'quick_add' => 'Añadir Rápido',
                 'entity-type' => 'Tipo de Entidad',
                 'type' => 'Tipo',
                 'validations' => 'Validaciones',
@@ -1465,8 +1480,9 @@ return [
                 'lookup-type' => 'Tipo de Búsqueda',
                 'multiselect' => 'Selección Múltiple',
                 'name' => 'Nombre',
+                'quick_add' => 'Añadir Rápido',
                 'numeric' => 'Numérico',
-                'option-deleted' => 'Attribute Option is deleted successfully',
+                'option-deleted' => 'Opción de Atributo eliminada con éxito',
                 'option-name' => 'Nombre de Opción',
                 'option-type' => 'Tipo de Opción',
                 'options' => 'Opciones',
@@ -1676,7 +1692,6 @@ return [
                 'delete' => 'Eliminar',
             ],
         ],
-
         'create-success' => 'Correo enviado con éxito.',
         'update-success' => 'Correo actualizado con éxito.',
         'mass-update-success' => 'Correos actualizados con éxito.',
@@ -1684,7 +1699,6 @@ return [
         'delete-failed' => 'No se puede eliminar el correo.',
         'invalid-route' => 'Ruta inválida para el correo.',
         'unauthorized' => 'Esta acción no está autorizada.',
-
         'view' => [
             'title' => 'Correos',
             'subject' => ':subject',
@@ -1801,6 +1815,7 @@ return [
                     'title' => 'Título',
                     'tags' => 'Etiquetas',
                     'expected-close-date' => 'Fecha de Cierre Esperada',
+                    'date-to' => 'Fecha Hasta',
                     'created-at' => 'Creado En',
                 ],
                 'toolbar' => [
@@ -1816,6 +1831,15 @@ return [
                         'select' => 'Seleccionar',
                         'to' => 'A',
                     ],
+                ],
+                'stages' => [
+                    'won' => 'Ganado',
+                    'lost' => 'Perdido',
+                    'need-more-info' => 'Necesita Más Información',
+                    'closed-at' => 'Cerrado En',
+                    'won-value' => 'Valor Ganado',
+                    'lost-reason' => 'Razón de la Pérdida',
+                    'save-btn' => 'Guardar',
                 ],
             ],
             'view-switcher' => [
@@ -1854,6 +1878,7 @@ return [
         'common' => [
             'contact' => [
                 'name' => 'Nombre',
+                'name-search-placeholder' => 'Buscar por nombre, correo electrónico y número',
                 'email' => 'Correo Electrónico',
                 'contact-number' => 'Número de Contacto',
                 'organization' => 'Organización',
@@ -1917,6 +1942,12 @@ return [
             'persons' => [
                 'title' => 'Sobre las Personas',
                 'job-title' => ':job_title en :organization',
+                'no-person' => 'No se ha asignado ninguna persona de contacto a este lead.',
+                'attach-btn' => 'Adjuntar Persona de Contacto',
+                'change-btn' => 'Cambiar',
+                'change-title' => 'Cambiar Persona de Contacto',
+                'save-btn' => 'Guardar',
+                'cancel-btn' => 'Cancelar',
             ],
             'stages' => [
                 'won' => 'Ganado',
@@ -1957,6 +1988,8 @@ return [
                         'logo-image' => 'Imagen del Logo',
                         'title' => 'Logo del Administrador',
                         'title-info' => 'Configura la imagen del logo para tu panel de administración.',
+                        'favicon-image' => 'Imagen del Favicon',
+                        'favicon-image-info' => 'Configura la imagen del favicon para tu panel de administración.',
                     ],
                 ],
                 'settings' => [
@@ -1988,7 +2021,7 @@ return [
                         'trash' => 'Papelera',
                     ],
                     'menu-color' => [
-                        'brand-color' => 'Brand Color',
+                        'brand-color' => 'Color de Marca',
                         'info' => 'Podemos cambiar los colores de los elementos del menú aquí.',
                         'title' => 'Configuraciones de Color de Elementos del Menú',
                     ],
@@ -2088,9 +2121,65 @@ return [
             ],
         ],
     ],
+    'help' => [
+        'index' => [
+            'title' => 'Ayuda y recursos',
+            'description' => 'Todo lo que necesitas para sacar el máximo partido a Krayin Admin: alojamiento, soporte y servicios profesionales, además de extensiones y documentación para desarrolladores.',
+            'contact-us' => 'Contáctanos',
+            'view-all' => 'Ver todo',
+            'still-need-help-title' => '¿Todavía necesitas ayuda?',
+            'still-need-help-description' => 'Habla con el equipo de Krayin sobre alojamiento, desarrollo personalizado o cualquier otra cosa.',
+
+            'services' => [
+                'title' => 'Servicios y recursos',
+                'cloud-hosting' => [
+                    'title' => 'Alojamiento en la nube',
+                    'description' => 'Alojamiento en la nube gestionado y rentable: prueba y lanza Krayin en la nube en minutos, totalmente optimizado y escalable.',
+                ],
+                'support' => [
+                    'title' => 'Soporte y mantenimiento',
+                    'description' => 'Soporte técnico dedicado y planes de mantenimiento continuo para mantener tu CRM seguro, actualizado y funcionando sin problemas.',
+                ],
+                'extensions' => [
+                    'title' => 'Extensiones',
+                    'description' => 'Explora complementos oficiales y de la comunidad para ampliar Krayin con nuevos conectores, canales y funciones.',
+                ],
+            ],
+
+            'resources' => [
+                'title' => 'Documentación',
+                'user-docs' => [
+                    'title' => 'Guía del usuario',
+                    'description' => 'Ayuda experta para la integración de módulos, personalización, migración de datos, actualizaciones de versión y desarrollo a medida.',
+                ],
+                'dev-docs' => [
+                    'title' => 'Documentación para desarrolladores y blogs',
+                    'description' => 'Guías para desarrolladores, tutoriales y los últimos artículos para ayudarte a crear, configurar y mantenerte al día.',
+                ],
+                'api-docs' => [
+                    'title' => 'Documentación de la API',
+                    'description' => 'Referencia completa de la API REST con endpoints, autenticación y ejemplos para integrar Krayin con tu stack.',
+                ],
+            ],
+
+            'community' => [
+                'forums' => [
+                    'title' => 'Foros de la comunidad',
+                    'description' => 'Conecta con miles de usuarios y desarrolladores de Krayin para compartir consejos y resolver problemas.',
+                    'link' => 'Únete a la comunidad',
+                ],
+                'tutorials' => [
+                    'title' => 'Tutoriales en vídeo',
+                    'description' => 'Mira guías en vídeo paso a paso sobre cómo configurar tu CRM, configurar canales y gestionar usuarios.',
+                    'link' => 'Explorar el canal de YouTube',
+                ],
+            ],
+        ],
+    ],
     'layouts' => [
         'app-version' => 'Versión: :version',
         'dashboard' => 'Tablero',
+        'help' => 'Ayuda y recursos',
         'leads' => 'Leads',
         'quotes' => 'Cotizaciones',
         'quote' => 'Cotización',
@@ -2124,6 +2213,13 @@ return [
         'users-info' => 'Agregar, editar o eliminar usuarios del CRM',
         'lead' => 'Lead',
         'lead-info' => 'Administra todas las configuraciones relacionadas con los leads en el CRM',
+        'quick-add' => [
+            'title' => 'Añadir rápido',
+            'save' => 'Guardar',
+            'to' => 'Para',
+            'subject' => 'Asunto',
+            'message' => 'Mensaje',
+        ],
         'pipelines' => 'Pipelines',
         'pipelines-info' => 'Agregar, editar o eliminar pipelines del CRM',
         'sources' => 'Fuentes',
@@ -2210,6 +2306,8 @@ return [
         'dashboard' => 'Tablero',
         'go-back' => 'Volver',
         'support' => 'Si el problema persiste, contáctanos en <a href=":link" class=":class">:email</a> para obtener ayuda.',
+        'unauthorized' => 'Esta acción no está autorizada.',
+
         '404' => [
             'description' => '¡Ups! La página que estás buscando está de vacaciones. Parece que no pudimos encontrar lo que estabas buscando.',
             'title' => '404 Página No Encontrada',

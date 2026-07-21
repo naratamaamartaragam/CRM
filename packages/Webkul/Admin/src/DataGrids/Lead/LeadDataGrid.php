@@ -87,7 +87,9 @@ class LeadDataGrid extends DataGrid
         }
 
         if (! is_null(request()->input('rotten_lead.in'))) {
-            $queryBuilder->havingRaw($tablePrefix.'rotten_lead = '.request()->input('rotten_lead.in'));
+            $queryBuilder->havingRaw($tablePrefix.'rotten_lead = ?', [
+                (int) request()->input('rotten_lead.in'),
+            ]);
         }
 
         $this->addFilter('id', 'leads.id');
@@ -210,6 +212,10 @@ class LeadDataGrid extends DataGrid
                 ],
             ],
             'closure' => function ($row) {
+                if (! $row->person_id) {
+                    return '--';
+                }
+
                 $route = route('admin.contacts.persons.view', $row->person_id);
 
                 return "<a class=\"text-brandColor transition-all hover:underline\" href='".$route."'>".$row->person_name.'</a>';

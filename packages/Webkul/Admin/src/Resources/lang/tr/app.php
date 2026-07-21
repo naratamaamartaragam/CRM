@@ -2,6 +2,7 @@
 
 return [
     'acl' => [
+        'help' => 'Yardım',
         'leads' => 'Potansiyeller',
         'lead' => 'Potansiyel',
         'quotes' => 'Teklifler',
@@ -33,6 +34,7 @@ return [
         'tags' => 'Etiketler',
         'configuration' => 'Yapılandırma',
         'create' => 'Oluştur',
+        'quick_add' => 'Hızlı Ekle',
         'edit' => 'Düzenle',
         'view' => 'Görüntüle',
         'print' => 'Yazdır',
@@ -342,11 +344,15 @@ return [
                         'quotes' => 'Teklifler',
                         'persons' => 'Kişiler',
                         'products' => 'Ürünler',
+                        'settings' => 'Ayarlar',
+                        'configurations' => 'Yaplandırmalar',
                     ],
                     'explore-all-products' => 'Tüm Ürünleri Keşfet',
                     'explore-all-leads' => 'Tüm Müşterileri Keşfet',
                     'explore-all-contacts' => 'Tüm İletişimleri Keşfet',
                     'explore-all-quotes' => 'Tüm Teklifleri Keşfet',
+                    'explore-all-settings' => 'Tüm Ayarları Keşfet',
+                    'explore-all-configurations' => 'Tüm Yapılandırmaları Keşfet',
                     'explore-all-matching-products' => '":query" (:count) ile eşleşen tüm ürünleri keşfet',
                     'explore-all-matching-leads' => '":query" (:count) ile eşleşen tüm müşterileri keşfet',
                     'explore-all-matching-contacts' => '":query" (:count) ile eşleşen tüm iletişimleri keşfet',
@@ -411,6 +417,7 @@ return [
                 'billing-address' => 'Fatura Adresi',
                 'date' => 'Tarih',
                 'discount' => 'İndirim',
+                'description' => 'Açıklama',
                 'expired-at' => 'Son Kullanma Tarihi',
                 'grand-total' => 'Genel Toplam',
                 'person' => 'Kişi',
@@ -434,6 +441,7 @@ return [
             'quote-info-info' => 'Teklifin temel bilgilerini girin.',
             'address-info' => 'Adres Bilgileri',
             'address-info-info' => 'Teklif ile ilgili adres bilgileri.',
+            'same-as-billing' => 'Teslimat adresi fatura adresi ile aynı',
             'quote-items' => 'Teklif Kalemleri',
             'search-products' => 'Ürünleri Ara',
             'link-to-lead' => 'Potansiyele Bağla',
@@ -509,6 +517,7 @@ return [
                     'view' => 'Görüntüle',
                     'name' => 'Ad',
                     'organization-name' => 'Kuruluş Adı',
+                    'tag-name' => 'Etiket Adı',
                 ],
             ],
             'view' => [
@@ -659,13 +668,13 @@ return [
                 'about-product' => 'Ürün Hakkında',
             ],
             'inventory' => [
-                'source' => 'Kaynak',
+                'warehouse' => 'Depo',
                 'in-stock' => 'Stokta',
                 'allocated' => 'Tahsis Edilen',
                 'on-hand' => 'Elinde',
                 'actions' => 'İşlemler',
                 'assign' => 'Ata',
-                'add-source' => 'Kaynak Ekle',
+                'add-warehouse' => 'Depo Ekle',
                 'location' => 'Konum',
                 'add-more' => 'Daha Fazla Ekle',
                 'save' => 'Kaydet',
@@ -848,6 +857,8 @@ return [
                 'any-condition-are-true' => 'Herhangi bir koşul doğru',
                 'add-condition' => 'Koşul Ekle',
                 'add-action' => 'Eylem Ekle',
+                'no-webhook-found' => 'Webhook bulunamadı.',
+                'create-webhook' => 'Yeni bir webhook oluşturun.',
                 'yes' => 'Evet',
                 'no' => 'Hayır',
                 'email' => 'E-posta',
@@ -931,6 +942,7 @@ return [
                 'general' => 'Genel',
                 'leads' => 'Fırsatlar',
                 'person' => 'Kişi',
+                'pipeline' => 'Pipeline',
                 'save-btn' => 'Web Formunu Kaydet',
                 'submit-button-label' => 'Gönderim Düğmesi Etiketi',
                 'submit-success-action' => 'Gönderim Başarı Eylemi',
@@ -964,6 +976,7 @@ return [
                 'general' => 'Genel',
                 'leads' => 'Fırsatlar',
                 'person' => 'Kişi',
+                'pipeline' => 'Pipeline',
                 'preview' => 'Önizleme',
                 'public-url' => 'Genel URL',
                 'redirect-to-url' => 'URL\'ye Yönlendir',
@@ -1052,7 +1065,6 @@ return [
                     'delete-success' => 'Kampanya başarıyla silindi.',
                     'delete-failed' => 'Kampanya silinemedi.',
                     'mass-delete-success' => 'Kampanyalar başarıyla silindi',
-
                     'datagrid' => [
                         'id' => 'ID',
                         'name' => 'Ad',
@@ -1149,7 +1161,7 @@ return [
                     'status' => 'Durum',
                     'title' => 'Kullanıcı Oluştur',
                     'view-permission' => 'Görüntüleme İzni',
-                    'select-at-lest-one-group' => 'Select at least one group',
+                    'select-at-lest-one-group' => 'En az bir grup seçin',
                 ],
                 'edit' => [
                     'title' => 'Kullanıcıyı Düzenle',
@@ -1190,7 +1202,7 @@ return [
                 'lost-stage' => 'Kaybetti',
                 'stage-btn' => 'Aşama Ekle',
                 'stages' => 'Aşamalar',
-                'duplicate-name' => '"Ad" alanı tekrar edemez',
+                'duplicate-name' => 'Ad alanı tekrar edemez',
                 'delete-stage' => 'Aşama Sil',
                 'add-new-stages' => 'Yeni Aşamalar Ekle',
                 'add-stage-info' => 'Pipeline için yeni aşama ekleyin',
@@ -1210,7 +1222,7 @@ return [
                 'lost-stage' => 'Kaybetti',
                 'stage-btn' => 'Aşama Ekle',
                 'stages' => 'Aşamalar',
-                'duplicate-name' => '"Ad" alanı tekrar edemez',
+                'duplicate-name' => 'Ad alanı tekrar edemez',
                 'delete-stage' => 'Aşama Sil',
                 'add-new-stages' => 'Yeni Aşamalar Ekle',
                 'add-stage-info' => 'Pipeline için yeni aşama ekleyin',
@@ -1369,6 +1381,7 @@ return [
                     'is-default' => 'Varsayılan mı',
                     'edit' => 'Düzenle',
                     'delete' => 'Sil',
+                    'quick-add' => 'Hızlı Ekle',
                     'entity-types' => [
                         'leads' => 'Potansiyeller',
                         'organizations' => 'Organizasyonlar',
@@ -1401,6 +1414,7 @@ return [
                 'save-btn' => 'Özniteliği Kaydet',
                 'code' => 'Kod',
                 'name' => 'Ad',
+                'quick_add' => 'Hızlı Ekle',
                 'entity-type' => 'Varlık Türü',
                 'type' => 'Tür',
                 'validations' => 'Doğrulamalar',
@@ -1466,8 +1480,9 @@ return [
                 'lookup-type' => 'Arama Türü',
                 'multiselect' => 'Çoklu Seçim',
                 'name' => 'Ad',
+                'quick_add' => 'Hızlı Ekle',
                 'numeric' => 'Sayısal',
-                'option-deleted' => 'Attribute Option is deleted successfully',
+                'option-deleted' => 'Öznitelik Seçeneği başarıyla silindi',
                 'option-name' => 'Seçenek Adı',
                 'option-type' => 'Seçenek Türü',
                 'options' => 'Seçenekler',
@@ -1677,7 +1692,6 @@ return [
                 'delete' => 'Sil',
             ],
         ],
-
         'create-success' => 'E-posta başarıyla gönderildi.',
         'update-success' => 'E-posta başarıyla güncellendi.',
         'mass-update-success' => 'E-postalar başarıyla güncellendi.',
@@ -1685,7 +1699,6 @@ return [
         'delete-failed' => 'E-posta silinemedi.',
         'invalid-route' => 'Geçersiz rota için mail.',
         'unauthorized' => 'Bu işlem yetkilendirilmemiştir.',
-
         'view' => [
             'title' => 'Mails',
             'subject' => ':subject',
@@ -1802,6 +1815,7 @@ return [
                     'title' => 'Başlık',
                     'tags' => 'Etiketler',
                     'expected-close-date' => 'Beklenen Kapanış Tarihi',
+                    'date-to' => 'Bitiş Tarihi',
                     'created-at' => 'Oluşturulma Tarihi',
                 ],
                 'toolbar' => [
@@ -1817,6 +1831,15 @@ return [
                         'select' => 'Seç',
                         'to' => 'Kime',
                     ],
+                ],
+                'stages' => [
+                    'won' => 'Kazandı',
+                    'lost' => 'Kayıp',
+                    'need-more-info' => 'Daha Fazla Bilgi Gerekiyor',
+                    'closed-at' => 'Kapanış Tarihi',
+                    'won-value' => 'Kazanan Değer',
+                    'lost-reason' => 'Kayıp Nedeni',
+                    'save-btn' => 'Kaydet',
                 ],
             ],
             'view-switcher' => [
@@ -1855,6 +1878,7 @@ return [
         'common' => [
             'contact' => [
                 'name' => 'Ad',
+                'name-search-placeholder' => 'Ad, e-posta ve numaraya göre ara',
                 'email' => 'E-posta',
                 'contact-number' => 'İletişim Numarası',
                 'organization' => 'Kuruluş',
@@ -1918,6 +1942,12 @@ return [
             'persons' => [
                 'title' => 'Kişiler Hakkında',
                 'job-title' => ':job_title @ :organization',
+                'no-person' => 'Bu potansiyel müşteriye atanmış bir iletişim kişisi yok.',
+                'attach-btn' => 'İletişim Kişisi Ekle',
+                'change-btn' => 'Değiştir',
+                'change-title' => 'İletişim Kişisini Değiştir',
+                'save-btn' => 'Kaydet',
+                'cancel-btn' => 'İptal',
             ],
             'stages' => [
                 'won' => 'Kazandı',
@@ -1958,6 +1988,8 @@ return [
                         'logo-image' => 'Logo Resmi',
                         'title' => 'Yönetici Logosu',
                         'title-info' => 'Yönetici paneliniz için logo resmini yapılandırın.',
+                        'favicon-image' => 'Favicon Resmi',
+                        'favicon-image-info' => 'Yönetici paneliniz için favicon resmini yapılandırın.',
                     ],
                 ],
                 'settings' => [
@@ -1989,27 +2021,27 @@ return [
                         'trash' => 'Çöp Kutusu',
                     ],
                     'menu-color' => [
-                        'brand-color' => 'Brand Color',
+                        'brand-color' => 'Marka Rengi',
                         'info' => 'Menü öğelerinin renklerini burada değiştirebiliriz.',
                         'title' => 'Menü Öğesi Renk Yapılandırmaları',
                     ],
                 ],
             ],
             'email' => [
-                'title' => 'Email Settings',
-                'info' => 'Email configuration for the application.',
+                'title' => 'Email Ayarları',
+                'info' => 'Uygulama için email yapılandırması.',
                 'imap' => [
-                    'title' => 'IMAP Settings',
-                    'info' => 'IMAP email configuration for receiving emails.',
+                    'title' => 'IMAP Ayarları',
+                    'info' => 'IMAP email yapılandırması için.',
                     'account' => [
-                        'title' => 'IMAP Account',
-                        'title-info' => 'Configure your IMAP account settings here.',
+                        'title' => 'IMAP Hesabı',
+                        'title-info' => 'IMAP hesap ayarlarınızı burada yapılandırın.',
                         'host' => 'Host',
                         'port' => 'Port',
-                        'encryption' => 'Encryption Type',
-                        'validate-cert' => 'Validate SSL Certificate',
-                        'username' => 'IMAP Username',
-                        'password' => 'IMAP Password',
+                        'encryption' => 'Şifreleme Türü',
+                        'validate-cert' => 'SSL Sertifikasını Doğrula',
+                        'username' => 'IMAP Kullanıcı Adı',
+                        'password' => 'IMAP Şifresi',
                     ],
                 ],
             ],
@@ -2042,8 +2074,8 @@ return [
     'dashboard' => [
         'index' => [
             'title' => 'Gösterge Paneli',
-            'start-date' => 'Start Date',
-            'end-date' => 'End Date',
+            'start-date' => 'Başlangıç Tarihi',
+            'end-date' => 'Bitiş Tarihi',
             'revenue' => [
                 'lost-revenue' => 'Kayıp Gelir',
                 'won-revenue' => 'Kazançlı Gelir',
@@ -2089,9 +2121,65 @@ return [
             ],
         ],
     ],
+    'help' => [
+        'index' => [
+            'title' => 'Yardım ve Kaynaklar',
+            'description' => 'Krayin Admin panelinden en iyi şekilde yararlanmanız için gereken her şey — barındırma, destek ve profesyonel hizmetlerin yanı sıra eklentiler ve geliştirici dokümantasyonu.',
+            'contact-us' => 'Bize ulaşın',
+            'view-all' => 'Tümünü gör',
+            'still-need-help-title' => 'Hâlâ yardıma mı ihtiyacınız var?',
+            'still-need-help-description' => 'Barındırma, özel geliştirme veya başka her konuda Krayin ekibiyle görüşün.',
+
+            'services' => [
+                'title' => 'Hizmetler ve Kaynaklar',
+                'cloud-hosting' => [
+                    'title' => 'Bulut Barındırma',
+                    'description' => 'Uygun maliyetli, yönetilen bulut barındırma — Krayin uygulamasını dakikalar içinde bulutta deneyip yayına alın; tamamen optimize edilmiş ve ölçeklenebilir.',
+                ],
+                'support' => [
+                    'title' => 'Destek ve Bakım',
+                    'description' => 'CRM sisteminizi güvenli, güncel ve sorunsuz tutmak için özel teknik destek ve sürekli bakım planları.',
+                ],
+                'extensions' => [
+                    'title' => 'Eklentiler',
+                    'description' => 'Krayin uygulamasını yeni bağlayıcılar, kanallar ve özelliklerle genişletmek için resmi ve topluluk eklentilerine göz atın.',
+                ],
+            ],
+
+            'resources' => [
+                'title' => 'Dokümantasyon',
+                'user-docs' => [
+                    'title' => 'Kullanıcı Kılavuzu',
+                    'description' => 'Modül entegrasyonu, özelleştirme, veri taşıma, sürüm yükseltmeleri ve özel geliştirme için uzman yardımı.',
+                ],
+                'dev-docs' => [
+                    'title' => 'Geliştirici Dokümanları ve Bloglar',
+                    'description' => 'Oluşturmanıza, yapılandırmanıza ve güncel kalmanıza yardımcı olacak geliştirici kılavuzları, eğitimler ve en yeni makaleler.',
+                ],
+                'api-docs' => [
+                    'title' => 'API Dokümanları',
+                    'description' => 'Krayin uygulamasını sisteminize entegre etmek için uç noktalar, kimlik doğrulama ve örnekler içeren eksiksiz REST API referansı.',
+                ],
+            ],
+
+            'community' => [
+                'forums' => [
+                    'title' => 'Topluluk Forumları',
+                    'description' => 'İpuçlarını paylaşmak ve sorunları çözmek için binlerce Krayin kullanıcısı ve geliştiricisiyle bağlantı kurun.',
+                    'link' => 'Topluluğa katılın',
+                ],
+                'tutorials' => [
+                    'title' => 'Video Eğitimleri',
+                    'description' => 'CRM kurulumu, pipeline yapılandırması ve kullanıcı yönetimi hakkında adım adım video kılavuzlarını izleyin.',
+                    'link' => 'YouTube kanalına göz atın',
+                ],
+            ],
+        ],
+    ],
     'layouts' => [
         'app-version' => 'Sürüm: :version',
         'dashboard' => 'Gösterge Paneli',
+        'help' => 'Yardım ve Kaynaklar',
         'leads' => 'Leadler',
         'quotes' => 'Teklifler',
         'quote' => 'Teklif',
@@ -2125,6 +2213,13 @@ return [
         'users-info' => 'CRM’den kullanıcıları ekleyin, düzenleyin veya silin',
         'lead' => 'Lead',
         'lead-info' => 'CRM’de tüm lead ayarlarınızı yönetin',
+        'quick-add' => [
+            'title' => 'Hızlı Ekle',
+            'save' => 'Kaydet',
+            'to' => 'Kime',
+            'subject' => 'Konu',
+            'message' => 'Mesaj',
+        ],
         'pipelines' => 'Pipeline’lar',
         'pipelines-info' => 'CRM’den pipeline’ları ekleyin, düzenleyin veya silin',
         'sources' => 'Kaynaklar',
@@ -2211,6 +2306,8 @@ return [
         'dashboard' => 'Kontrol Paneli',
         'go-back' => 'Geri Dön',
         'support' => 'Sorun devam ederse, yardım için bize <a href=":link" class=":class">:email</a> adresinden ulaşın.',
+        'unauthorized' => 'Bu işlem için yetkiniz yok.',
+
         '404' => [
             'description' => 'Oops! Aradığınız sayfa tatilde. Aradığınız şeyi bulamadık gibi görünüyor.',
             'title' => '404 Sayfa Bulunamadı',

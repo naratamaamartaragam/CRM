@@ -33,9 +33,11 @@ class QuoteController extends Controller
      */
     public function store($id)
     {
-        Event::dispatch('leads.quote.create.before');
+        $lead = $this->leadRepository->findOrFail($id);
 
-        $lead = $this->leadRepository->find($id);
+        $this->preventUnauthorizedAccess($lead->user_id);
+
+        Event::dispatch('leads.quote.create.before');
 
         if (! $lead->quotes->contains(request('id'))) {
             $lead->quotes()->attach(request('id'));
@@ -57,9 +59,11 @@ class QuoteController extends Controller
      */
     public function delete($leadId)
     {
-        Event::dispatch('leads.quote.delete.before', $leadId);
+        $lead = $this->leadRepository->findOrFail($leadId);
 
-        $lead = $this->leadRepository->find($leadId);
+        $this->preventUnauthorizedAccess($lead->user_id);
+
+        Event::dispatch('leads.quote.delete.before', $leadId);
 
         $lead->quotes()->detach(request('quote_id'));
 
@@ -81,6 +85,8 @@ class QuoteController extends Controller
     {
         $quote = $this->quoteRepository->findOrFail($quoteId);
 
+        $this->preventUnauthorizedAccess($quote->user_id);
+
         $lead = $quote->leads->first();
 
         if (! $quote) {
@@ -89,9 +95,17 @@ class QuoteController extends Controller
             ], 404);
         }
 
-        $to = data_get($lead->person?->emails, '0.value');
+        $to = [];
 
-        if (! $to) {
+        if ($lead) {
+            $to[] = data_get($lead->person?->emails, '0.value');
+        }
+
+        if ($quote->person) {
+            $to[] = data_get($quote->person?->emails, '0.value');
+        }
+
+        if (empty($to)) {
             return response()->json([
                 'message' => trans('admin::app.leads.view.quotes.person-email-unavailable'),
             ], 422);
@@ -101,7 +115,7 @@ class QuoteController extends Controller
             $pdfContent = $this->renderQuotePdfContent($quote);
 
             Mail::send(new Common([
-                'to' => [$to],
+                'to' => $to,
                 'subject' => trans('admin::app.leads.view.quotes.mail-subject', ['subject' => $quote->subject]),
                 'body' => trans('admin::app.leads.view.quotes.mail-body'),
                 'attachments' => [[

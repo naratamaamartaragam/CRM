@@ -79,9 +79,13 @@ class QuoteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AttributeForm $request): RedirectResponse
+    public function store(AttributeForm $request): RedirectResponse|JsonResponse
     {
-        $this->additionalValidation();
+        if (! request()->has('quick_add')) {
+            $this->additionalValidation();
+        }
+
+        $this->syncShippingAddressWithBilling($request);
 
         Event::dispatch('quote.create.before');
 
@@ -97,6 +101,13 @@ class QuoteController extends Controller
 
         Event::dispatch('quote.create.after', $quote);
 
+        if (request()->ajax()) {
+            return response()->json([
+                'data' => $quote,
+                'message' => trans('admin::app.quotes.index.create-success'),
+            ]);
+        }
+
         session()->flash('success', trans('admin::app.quotes.index.create-success'));
 
         return request()->query('from') === 'lead' && $leadId
@@ -110,6 +121,8 @@ class QuoteController extends Controller
     public function edit(int $id): View
     {
         $quote = $this->quoteRepository->findOrFail($id);
+
+        $this->preventUnauthorizedAccess($quote->user_id);
 
         $leadId = old('lead_id') ?? optional($quote->leads->first())->id;
 
@@ -131,7 +144,11 @@ class QuoteController extends Controller
      */
     public function update(AttributeForm $request, int $id): RedirectResponse
     {
+        $this->preventUnauthorizedAccess($this->quoteRepository->findOrFail($id)->user_id);
+
         $this->additionalValidation();
+
+        $this->syncShippingAddressWithBilling($request);
 
         Event::dispatch('quote.update.before', $id);
 
@@ -185,7 +202,7 @@ class QuoteController extends Controller
      */
     public function destroy(int $id): JsonResponse
     {
-        $this->quoteRepository->findOrFail($id);
+        $this->preventUnauthorizedAccess($this->quoteRepository->findOrFail($id)->user_id);
 
         try {
             Event::dispatch('quote.delete.before', $id);
@@ -209,7 +226,9 @@ class QuoteController extends Controller
      */
     public function massDestroy(MassDestroyRequest $massDestroyRequest): JsonResponse
     {
-        $quotes = $this->quoteRepository->findWhereIn('id', $massDestroyRequest->input('indices'));
+        $quotes = $this->filterAuthorizedRecords(
+            $this->quoteRepository->findWhereIn('id', $massDestroyRequest->input('indices'))
+        );
 
         try {
             foreach ($quotes as $quotes) {
@@ -237,10 +256,24 @@ class QuoteController extends Controller
     {
         $quote = $this->quoteRepository->findOrFail($id);
 
+        $this->preventUnauthorizedAccess($quote->user_id);
+
         return $this->downloadPDF(
             view('admin::quotes.pdf', compact('quote'))->render(),
             'Quote_'.$quote->subject.'_'.$quote->created_at->format('d-m-Y')
         );
+    }
+
+    /**
+     * Mirror the billing address into the shipping address when "same as billing" is enabled.
+     */
+    private function syncShippingAddressWithBilling(AttributeForm $request): void
+    {
+        if ($request->boolean('shipping_address_same_as_billing')) {
+            $request->merge([
+                'shipping_address' => $request->input('billing_address'),
+            ]);
+        }
     }
 
     /**
