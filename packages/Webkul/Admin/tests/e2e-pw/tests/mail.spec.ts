@@ -81,7 +81,7 @@ test.describe("mail management", async () => {
         await mailPage.movedEmailToTrash();
 
         await mailPage.navigateToMailTrashedPage();
-        await mailPage.searchEmail(mailData.subject);
+        await mailPage.deleteEmailFromTrash(mailData.subject);
         await expect(adminPage.getByRole('paragraph').filter({ hasText: mailData.subject }).first()).not.toBeVisible();
 
     });

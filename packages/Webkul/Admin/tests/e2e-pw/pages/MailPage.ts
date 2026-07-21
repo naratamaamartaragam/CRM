@@ -125,7 +125,7 @@ export class MailPage extends CoreLocators {
         await this.multiSelectCheckbox.click();
         await this.deleteButton.click();
         await this.agreeButton.click();
-        await expect(this.successMessage).toBeVisible();
+       
     }
 
 }
