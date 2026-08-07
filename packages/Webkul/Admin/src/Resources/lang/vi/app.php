@@ -2385,6 +2385,7 @@ return [
     'errors' => [
         'dashboard' => 'Bảng điều khiển',
         'go-back' => 'Quay lại',
+        'unauthorized' => 'Hành động này không được phép.',
         'support' => 'Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với chúng tôi tại <a href=":link" class=":class">:email</a> để được hỗ trợ.',
         'unauthorized' => 'Hành động này không được phép.',
 

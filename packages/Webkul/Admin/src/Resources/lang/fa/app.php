@@ -2385,6 +2385,7 @@ return [
     'errors' => [
         'dashboard' => 'داشبورد',
         'go-back' => 'بازگشت',
+        'unauthorized' => 'این عملیات مجاز نیست.',
         'support' => 'اگر مشکل ادامه داشت، برای کمک با ما از طریق <a href=":link" class=":class">:email</a> تماس بگیرید.',
         'unauthorized' => 'این عملیات مجاز نیست.',
 

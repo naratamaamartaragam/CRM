@@ -2385,6 +2385,7 @@ return [
     'errors' => [
         'dashboard' => 'Kontrol Paneli',
         'go-back' => 'Geri Dön',
+        'unauthorized' => 'Bu işlem yetkisiz.',
         'support' => 'Sorun devam ederse, yardım için bize <a href=":link" class=":class">:email</a> adresinden ulaşın.',
         'unauthorized' => 'Bu işlem için yetkiniz yok.',
 

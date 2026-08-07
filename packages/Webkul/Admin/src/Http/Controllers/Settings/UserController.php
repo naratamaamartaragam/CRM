@@ -125,13 +125,26 @@ class UserController extends Controller
 
         $data = request()->all();
 
+        $authUser = auth()->guard('user')->user();
+
+        /**
+         * A user without the `all` permission may only update their own account. Editing any other
+         * user's account is forbidden, so the request is rejected outright rather than silently
+         * dropping individual fields, which would still allow tampering with another user's name,
+         * email or groups (and account takeover through an email change).
+         */
+        if (
+            $authUser->id != $id
+            && $authUser->role?->permission_type !== 'all'
+        ) {
+            abort(401, trans('admin::app.errors.unauthorized'));
+        }
+
         if (empty($data['password'])) {
             $data = Arr::except($data, ['password', 'confirm_password']);
         } else {
             $data['password'] = bcrypt($data['password']);
         }
-
-        $authUser = auth()->guard('user')->user();
 
         if ($authUser->id == $id) {
             $data['status'] = true;
@@ -197,6 +210,10 @@ class UserController extends Controller
      */
     public function massUpdate(MassUpdateRequest $massDestroyRequest): JsonResponse
     {
+        if (auth()->guard('user')->user()->role?->permission_type !== 'all') {
+            abort(401, trans('admin::app.errors.unauthorized'));
+        }
+
         $count = 0;
 
         $users = $this->userRepository->findWhereIn('id', $massDestroyRequest->input('indices'));

@@ -2385,6 +2385,7 @@ return [
     'errors' => [
         'dashboard' => 'Tablero',
         'go-back' => 'Volver',
+        'unauthorized' => 'Esta acción no está autorizada.',
         'support' => 'Si el problema persiste, contáctanos en <a href=":link" class=":class">:email</a> para obtener ayuda.',
         'unauthorized' => 'Esta acción no está autorizada.',
 

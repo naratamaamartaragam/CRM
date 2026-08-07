@@ -2385,6 +2385,7 @@ return [
     'errors' => [
         'dashboard' => 'لوحة التحكم',
         'go-back' => 'العودة',
+        'unauthorized' => 'هذا الإجراء غير مصرح به.',
         'support' => 'إذا استمرت المشكلة، تواصل معنا على <a href=":link" class=":class">:email</a> للحصول على المساعدة.',
         'unauthorized' => 'هذا الإجراء غير مصرح به.',
 
