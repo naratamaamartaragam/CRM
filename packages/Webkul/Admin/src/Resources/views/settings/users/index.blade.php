@@ -570,6 +570,11 @@
 
                                 if (error.response.status === 422) {
                                     setErrors(error.response.data.errors);
+                                } else {
+                                    this.$emitter.emit('add-flash', {
+                                        type: 'error',
+                                        message: error.response?.data?.message ?? "@lang('admin::app.errors.unauthorized')",
+                                    });
                                 }
                             });
                     },
@@ -583,7 +588,12 @@
 
                                 this.$refs.userUpdateAndCreateModal.toggle();
                             })
-                            .catch(error => {});
+                            .catch(error => {
+                                this.$emitter.emit('add-flash', {
+                                    type: 'error',
+                                    message: error.response?.data?.message ?? "@lang('admin::app.errors.unauthorized')",
+                                });
+                            });
                     },
                 },
             });
