@@ -1158,6 +1158,8 @@ return [
                     'name' => 'Ad',
                     'status' => 'Durum',
                     'update-status' => 'Durumu Güncelle',
+                    'group' => 'İlişkili Grup',
+                    'no-group' => 'Grup Yok',
                     'users' => 'Kullanıcılar',
                 ],
                 'create' => [

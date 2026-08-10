@@ -1158,6 +1158,8 @@ return [
                     'name' => 'Nome',
                     'status' => 'Status',
                     'update-status' => 'Atualizar Status',
+                    'group' => 'Grupo Associado',
+                    'no-group' => 'Sem Grupo',
                     'users' => 'Usuários',
                 ],
                 'create' => [
